@@ -1,0 +1,47 @@
+type Comment @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user_id: String
+  rating: Int
+  comment: String
+  productID: ID! @index(name: "byProduct")
+}
+
+type Provider @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  image: String
+}
+
+type Product @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  description: String
+  price: String
+  Category: Category @hasOne
+  image: AWSURL
+  Offers: [Offers] @hasMany(indexName: "byProduct", fields: ["id"])
+  Comments: [Comment] @hasMany(indexName: "byProduct", fields: ["id"])
+}
+
+type Offers @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  url: String!
+  price: Float
+  name: String
+  Provider: Provider @hasOne
+  availability: Boolean
+  productID: ID! @index(name: "byProduct")
+}
+
+type Category @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  description: String
+}
+
+type SysInfo @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  description: String
+}
+ 

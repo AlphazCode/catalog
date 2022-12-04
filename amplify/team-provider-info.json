@@ -1,0 +1,29 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-catalog-staging-141333-authRole",
+      "UnauthRoleArn": "arn:aws:iam::877818465193:role/amplify-catalog-staging-141333-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::877818465193:role/amplify-catalog-staging-141333-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-catalog-staging-141333-deployment",
+      "UnauthRoleName": "amplify-catalog-staging-141333-unauthRole",
+      "StackName": "amplify-catalog-staging-141333",
+      "StackId": "arn:aws:cloudformation:eu-central-1:877818465193:stack/amplify-catalog-staging-141333/57103300-7182-11ed-b88a-0aefc95e9df0",
+      "AmplifyAppId": "d3pbo3r90w0pjr"
+    },
+    "categories": {
+      "auth": {
+        "catalog": {}
+      },
+      "function": {
+        "rozetkaparser": {
+          "deploymentBucketName": "amplify-catalog-staging-141333-deployment",
+          "s3Key": "amplify-builds/rozetkaparser-3632394c542f437a7465-build.zip"
+        }
+      },
+      "api": {
+        "catalog": {}
+      }
+    }
+  }
+}
