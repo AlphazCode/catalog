@@ -1,10 +1,10 @@
 import React from "react";
-import { HeroLayout2, MarketingFooter} from '../ui-components'
+import { HeroLayout1 } from "../ui-components";
 
 function Home() {
     return (
       <div className="App">
-        Hi
+        <HeroLayout1></HeroLayout1>
         </div>
     );
   }

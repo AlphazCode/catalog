@@ -96,9 +96,8 @@ export default function CategoryUpdateForm(props) {
           modelFields = onSubmit(modelFields);
         }
         try {
-          const original = await DataStore.query(Category, id);
           await DataStore.save(
-            Category.copyOf(original, (updated) => {
+            Category.copyOf(categoryRecord, (updated) => {
               Object.assign(updated, modelFields);
             })
           );
@@ -174,7 +173,10 @@ export default function CategoryUpdateForm(props) {
           onClick={resetStateValues}
           {...getOverrideProps(overrides, "ResetButton")}
         ></Button>
-        <Flex {...getOverrideProps(overrides, "RightAlignCTASubFlex")}>
+        <Flex
+          gap="15px"
+          {...getOverrideProps(overrides, "RightAlignCTASubFlex")}
+        >
           <Button
             children="Cancel"
             type="button"

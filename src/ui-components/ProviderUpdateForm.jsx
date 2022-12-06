@@ -94,9 +94,8 @@ export default function ProviderUpdateForm(props) {
           modelFields = onSubmit(modelFields);
         }
         try {
-          const original = await DataStore.query(Provider, id);
           await DataStore.save(
-            Provider.copyOf(original, (updated) => {
+            Provider.copyOf(providerRecord, (updated) => {
               Object.assign(updated, modelFields);
             })
           );
@@ -172,7 +171,10 @@ export default function ProviderUpdateForm(props) {
           onClick={resetStateValues}
           {...getOverrideProps(overrides, "ResetButton")}
         ></Button>
-        <Flex {...getOverrideProps(overrides, "RightAlignCTASubFlex")}>
+        <Flex
+          gap="15px"
+          {...getOverrideProps(overrides, "RightAlignCTASubFlex")}
+        >
           <Button
             children="Cancel"
             type="button"

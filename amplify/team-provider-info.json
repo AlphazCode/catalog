@@ -23,6 +23,9 @@
       },
       "api": {
         "catalog": {}
+      },
+      "storage": {
+        "s3catalogstorage4f1411b5": {}
       }
     }
   }

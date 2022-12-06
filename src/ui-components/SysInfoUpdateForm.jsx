@@ -96,9 +96,8 @@ export default function SysInfoUpdateForm(props) {
           modelFields = onSubmit(modelFields);
         }
         try {
-          const original = await DataStore.query(SysInfo, id);
           await DataStore.save(
-            SysInfo.copyOf(original, (updated) => {
+            SysInfo.copyOf(sysInfoRecord, (updated) => {
               Object.assign(updated, modelFields);
             })
           );
@@ -174,7 +173,10 @@ export default function SysInfoUpdateForm(props) {
           onClick={resetStateValues}
           {...getOverrideProps(overrides, "ResetButton")}
         ></Button>
-        <Flex {...getOverrideProps(overrides, "RightAlignCTASubFlex")}>
+        <Flex
+          gap="15px"
+          {...getOverrideProps(overrides, "RightAlignCTASubFlex")}
+        >
           <Button
             children="Cancel"
             type="button"

@@ -172,17 +172,17 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "description": {
-                    "name": "description",
+                "min_price": {
+                    "name": "min_price",
                     "isArray": false,
-                    "type": "String",
+                    "type": "Float",
                     "isRequired": false,
                     "attributes": []
                 },
-                "price": {
-                    "name": "price",
+                "max_price": {
+                    "name": "max_price",
                     "isArray": false,
-                    "type": "String",
+                    "type": "Float",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -242,6 +242,13 @@ export const schema = {
                             "productID"
                         ]
                     }
+                },
+                "description": {
+                    "name": "description",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -549,5 +556,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.3.2",
-    "version": "a3a94dfc71104683a91a9fe535653caa"
+    "version": "e22a47118eb02ef8a346b381628eae07"
 };

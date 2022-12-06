@@ -1,7 +1,20 @@
-import React from "react";
-import {NavBar, ProductDetail} from '../ui-components'
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import {Product} from '../models'
+//import {NavBar} from '../ui-components'
 import '../App.css';
-function Product() {
+import {ItemCardCollection, ProductInfo } from "../ui-components";
+import { DataStore } from "aws-amplify";
+function Products() {
+    const params = useParams();
+    /*const [item, setItem] = useState();
+    const getItem = async () => {
+      const items = await DataStore.query(Product, c=>c.id("eq", params.id))//.then(item => {return item})  
+      if(items !== undefined) setItem(items[0]);
+    };
+    useEffect(() => {
+      setTimeout(getItem, 500);
+    }, []);*/
     /*const params = useParams();
     const [item, setItem] = useState();
     const [category, setCategory] = useState(); 
@@ -50,10 +63,11 @@ function Product() {
     return (
       <div className="App">
           <div className="ProductDetails">
-          <NavBar />
+            <ProductInfo product={params}></ProductInfo>
+              <ItemCardCollection product={params}></ItemCardCollection>
           </div>
         </div>
     );
   }
 
-export default Product;
+export default Products;

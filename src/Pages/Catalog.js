@@ -1,19 +1,19 @@
 import React from "react";
 import '../App.css';
-import {ActionCard, SideBar} from '../ui-components'
+import { ProductCardCollection, SideBar} from '../ui-components'
 
 function Catalog() {
+  const CollectionOverride = {
 
+  }
   return (
-    <div className="App">
-      <div className="container">
-        <div className="Sidebar">
-        <SideBar  />
-        </div>
-        <div className="Collection"/>
-          <ActionCard className="ActionCard" />
-        </div>
+  <div className="App">
+    <div className="container">
+      <div className="Collection">
+        <ProductCardCollection className="tallCardCollection" />
       </div>
+    </div>
+  </div>
   );
 }
 

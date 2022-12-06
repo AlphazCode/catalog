@@ -5,12 +5,9 @@
  **************************************************************************/
 
 import * as React from "react";
-import { Product } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { FlexProps } from "@aws-amplify/ui-react";
-export declare type ActionCardProps = React.PropsWithChildren<Partial<FlexProps> & {
-    product?: Product;
-} & {
+export declare type ProductInfoProps = React.PropsWithChildren<Partial<FlexProps> & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;
-export default function ActionCard(props: ActionCardProps): React.ReactElement;
+export default function ProductInfo(props: ProductInfoProps): React.ReactElement;

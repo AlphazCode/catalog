@@ -8,7 +8,7 @@
 import * as React from "react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Button, Flex, Image, Text } from "@aws-amplify/ui-react";
-import MyIcon from "./MyIcon";
+import MyIcongroup from "./MyIcongroup";
 export default function ProfileCard(props) {
   const { overrides, ...rest } = props;
   return (
@@ -107,7 +107,7 @@ export default function ProfileCard(props) {
         padding="0px 0px 0px 0px"
         {...getOverrideProps(overrides, "Followers")}
       >
-        <MyIcon
+        <MyIcongroup
           width="24px"
           height="24px"
           display="block"
@@ -118,9 +118,8 @@ export default function ProfileCard(props) {
           shrink="0"
           position="relative"
           padding="0px 0px 0px 0px"
-          type="group"
-          {...getOverrideProps(overrides, "MyIcon")}
-        ></MyIcon>
+          {...getOverrideProps(overrides, "MyIcon/group")}
+        ></MyIcongroup>
         <Text
           fontFamily="Inter"
           fontSize="16px"

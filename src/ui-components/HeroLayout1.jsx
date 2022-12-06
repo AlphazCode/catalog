@@ -10,10 +10,11 @@ import {
   getOverrideProps,
   getOverridesFromVariants,
   mergeVariantsAndOverrides,
+  useNavigateAction,
 } from "@aws-amplify/ui-react/internal";
 import { Button, Flex, Image, Text } from "@aws-amplify/ui-react";
 export default function HeroLayout1(props) {
-  const { overrides: overridesProp, ...rest } = props;
+  const { sysInfo, overrides: overridesProp, ...rest } = props;
   const variants = [
     {
       overrides: {
@@ -54,6 +55,7 @@ export default function HeroLayout1(props) {
     getOverridesFromVariants(variants, props),
     overridesProp || {}
   );
+  const buttonOnClick = useNavigateAction({ type: "url", url: "/Catalog" });
   return (
     <Flex
       gap="0"
@@ -119,7 +121,7 @@ export default function HeroLayout1(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children="LOREM IPSUM"
+            children=" "
             {...getOverrideProps(overrides, "LOREM IPSUM")}
           ></Text>
           <Flex
@@ -155,7 +157,7 @@ export default function HeroLayout1(props) {
               position="relative"
               padding="0px 0px 0px 0px"
               whiteSpace="pre-wrap"
-              children="Ut enim ad minim veniam quis nostrud"
+              children={sysInfo?.name}
               {...getOverrideProps(
                 overrides,
                 "Ut enim ad minim veniam quis nostrud"
@@ -181,7 +183,7 @@ export default function HeroLayout1(props) {
               position="relative"
               padding="0px 0px 0px 0px"
               whiteSpace="pre-wrap"
-              children="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco."
+              children={sysInfo?.description}
               {...getOverrideProps(
                 overrides,
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco."
@@ -194,6 +196,9 @@ export default function HeroLayout1(props) {
             isDisabled={false}
             variation="primary"
             children="Primary Button"
+            onClick={() => {
+              buttonOnClick();
+            }}
             {...getOverrideProps(overrides, "Button")}
           ></Button>
         </Flex>
@@ -228,6 +233,7 @@ export default function HeroLayout1(props) {
           position="relative"
           padding="0px 0px 0px 0px"
           objectFit="cover"
+          src="https://www.freeiconspng.com/thumbs/catalog-icon/orange-catalog-icon-1.png"
           {...getOverrideProps(overrides, "image")}
         ></Image>
       </Flex>

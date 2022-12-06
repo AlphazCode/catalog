@@ -5,13 +5,16 @@
  **************************************************************************/
 
 import * as React from "react";
-import { Offers, Provider } from "../models";
+import { ItemCardProps } from "./ItemCard";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { FlexProps } from "@aws-amplify/ui-react";
-export declare type ItemCardProps = React.PropsWithChildren<Partial<FlexProps> & {
-    offers?: Offers;
-    provider?: Provider;
+import { CollectionProps } from "@aws-amplify/ui-react";
+export declare type ItemCardCollectionProps = React.PropsWithChildren<Partial<CollectionProps<any>> & {
+    items?: any[];
+    overrideItems?: (collectionItem: {
+        item: any;
+        index: number;
+    }) => ItemCardProps;
 } & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;
-export default function ItemCard(props: ItemCardProps): React.ReactElement;
+export default function ItemCardCollection(props: ItemCardCollectionProps): React.ReactElement;

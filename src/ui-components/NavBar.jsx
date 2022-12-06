@@ -11,19 +11,19 @@ import {
   useNavigateAction,
 } from "@aws-amplify/ui-react/internal";
 import {
+  Button,
   Flex,
   Icon,
-  Image,
   SearchField,
   Text,
   View,
 } from "@aws-amplify/ui-react";
-import { DataStore } from "@aws-amplify/datastore";
-import { SysInfo } from "../models";
 export default function NavBar(props) {
   const { sysInfo, overrides, ...rest } = props;
-  const CatalogOnClick = useNavigateAction({ type: "url", url: "/Catalog" });
-  const HomeOnClick = useNavigateAction({ type: "url", url: "" });
+  const logofOnClick = useNavigateAction({ type: "url", url: "/" });
+  const catalogOnClick = useNavigateAction({ type: "url", url: "/Catalog" });
+  const aboutOnClick = useNavigateAction({ type: "url", url: "/About" });
+  const OnClick = useNavigateAction({ type: "url", url: "/About" });
   return (
     <Flex
       gap="20px"
@@ -38,21 +38,20 @@ export default function NavBar(props) {
       {...rest}
       {...getOverrideProps(overrides, "NavBar")}
     >
-      <Flex
-        gap="2px"
-        direction="row"
-        width="unset"
-        height="unset"
-        justifyContent="center"
-        alignItems="center"
+      <View
+        width="69px"
+        height="24px"
+        display="block"
+        gap="unset"
+        alignItems="unset"
+        justifyContent="unset"
         shrink="0"
-        alignSelf="stretch"
         position="relative"
         padding="0px 0px 0px 0px"
         onClick={() => {
-          Home();
+          logofOnClick();
         }}
-        {...getOverrideProps(overrides, "Logo29767073")}
+        {...getOverrideProps(overrides, "Logof")}
       >
         <Icon
           width="18px"
@@ -69,8 +68,9 @@ export default function NavBar(props) {
           gap="unset"
           alignItems="unset"
           justifyContent="unset"
-          shrink="0"
-          position="relative"
+          position="absolute"
+          top="3px"
+          left="0px"
           {...getOverrideProps(overrides, "Star 1")}
         ></Icon>
         <Text
@@ -88,14 +88,15 @@ export default function NavBar(props) {
           height="unset"
           gap="unset"
           alignItems="unset"
-          shrink="0"
-          position="relative"
+          position="absolute"
+          top="0px"
+          left="20px"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
-          children={sysInfo?.name}
-          {...getOverrideProps(overrides, "Logo29767075")}
+          children="Deals"
+          {...getOverrideProps(overrides, "Logo")}
         ></Text>
-      </Flex>
+      </View>
       <Flex
         gap="40px"
         direction="row"
@@ -110,62 +111,93 @@ export default function NavBar(props) {
         padding="0px 0px 0px 0px"
         {...getOverrideProps(overrides, "Frame 32129767076")}
       >
-        <Text
-          fontFamily="Inter"
-          fontSize="16px"
-          fontWeight="400"
-          color="rgba(0,0,0,1)"
-          lineHeight="24px"
-          textAlign="left"
+        <View
+          width="64px"
+          height="24px"
           display="block"
-          direction="column"
-          justifyContent="unset"
-          letterSpacing="0.01px"
-          width="unset"
-          height="unset"
           gap="unset"
           alignItems="unset"
+          justifyContent="unset"
           shrink="0"
           position="relative"
           padding="0px 0px 0px 0px"
-          whiteSpace="pre-wrap"
-          children="Каталог"
           onClick={() => {
-            CatalogOnClick();
+            catalogOnClick();
           }}
-          {...getOverrideProps(
-            overrides,
-            "\u041A\u0430\u0442\u0430\u043B\u043E\u0433"
-          )}
-        ></Text>
-        <Text
-          fontFamily="Inter"
-          fontSize="16px"
-          fontWeight="400"
-          color="rgba(0,0,0,1)"
-          lineHeight="24px"
-          textAlign="left"
+          {...getOverrideProps(overrides, "Catalog")}
+        >
+          <Text
+            fontFamily="Inter"
+            fontSize="16px"
+            fontWeight="400"
+            color="rgba(0,0,0,1)"
+            lineHeight="24px"
+            textAlign="left"
+            display="block"
+            direction="column"
+            justifyContent="unset"
+            letterSpacing="0.01px"
+            width="unset"
+            height="unset"
+            gap="unset"
+            alignItems="unset"
+            position="absolute"
+            top="0px"
+            left="0px"
+            padding="0px 0px 0px 0px"
+            whiteSpace="pre-wrap"
+            children="Каталог"
+            {...getOverrideProps(
+              overrides,
+              "\u041A\u0430\u0442\u0430\u043B\u043E\u0433"
+            )}
+          ></Text>
+        </View>
+        <View
+          width="64px"
+          height="24px"
           display="block"
-          direction="column"
-          justifyContent="unset"
-          letterSpacing="0.01px"
-          width="unset"
-          height="unset"
           gap="unset"
           alignItems="unset"
+          justifyContent="unset"
           shrink="0"
           position="relative"
           padding="0px 0px 0px 0px"
-          whiteSpace="pre-wrap"
-          children="Про нас"
           onClick={() => {
-            OnClick();
+            aboutOnClick();
           }}
-          {...getOverrideProps(
-            overrides,
-            "\u041F\u0440\u043E \u043D\u0430\u0441"
-          )}
-        ></Text>
+          {...getOverrideProps(overrides, "About")}
+        >
+          <Text
+            fontFamily="Inter"
+            fontSize="16px"
+            fontWeight="400"
+            color="rgba(0,0,0,1)"
+            lineHeight="24px"
+            textAlign="left"
+            display="block"
+            direction="column"
+            justifyContent="unset"
+            letterSpacing="0.01px"
+            width="unset"
+            height="unset"
+            gap="unset"
+            alignItems="unset"
+            position="absolute"
+            top="0px"
+            left="0px"
+            padding="0px 0px 0px 0px"
+            whiteSpace="pre-wrap"
+            children="Про нас"
+            onClick={() => {
+              OnClick();
+            }}
+            {...getOverrideProps(
+              overrides,
+              "\u041F\u0440\u043E \u043D\u0430\u0441"
+            )}
+          ></Text>
+        </View>
       </Flex>
       <Flex
         gap="32px"
@@ -226,20 +258,29 @@ export default function NavBar(props) {
             {...getOverrideProps(overrides, "Vector")}
           ></Icon>
         </View>
-        <Image
-          width="45px"
-          height="45px"
-          display="block"
-          gap="unset"
-          alignItems="unset"
-          justifyContent="unset"
+      </Flex>
+      <Flex
+        gap="10px"
+        direction="column"
+        width="unset"
+        height="unset"
+        justifyContent="center"
+        alignItems="center"
+        shrink="0"
+        position="relative"
+        padding="0px 0px 0px 0px"
+        {...getOverrideProps(overrides, "Frame 424")}
+      >
+        <Button
+          overflow="hidden"
           shrink="0"
-          position="relative"
-          borderRadius="160px"
-          padding="0px 0px 0px 0px"
-          objectFit="cover"
-          {...getOverrideProps(overrides, "image")}
-        ></Image>
+          boxShadow="0px 4px 4px rgba(0, 0, 0, 0.25)"
+          size="large"
+          isDisabled={false}
+          variation="default"
+          children="Увійти"
+          {...getOverrideProps(overrides, "Button")}
+        ></Button>
       </Flex>
     </Flex>
   );

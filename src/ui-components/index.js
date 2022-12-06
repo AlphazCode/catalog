@@ -6,10 +6,10 @@
 
 export { default as TallCard } from "./TallCard";
 export { default as MyIcon } from "./MyIcon";
+export { default as ProductInfo } from "./ProductInfo";
 export { default as MarketingPricing } from "./MarketingPricing";
 export { default as HeroLayout2 } from "./HeroLayout2";
 export { default as CloseIcon } from "./CloseIcon";
-export { default as ActionCard } from "./ActionCard";
 export { default as CommentCard } from "./CommentCard";
 export { default as ProductDetail } from "./ProductDetail";
 export { default as HeroLayout1 } from "./HeroLayout1";
@@ -19,10 +19,11 @@ export { default as FormCheckout } from "./FormCheckout";
 export { default as ProfileCard } from "./ProfileCard";
 export { default as ItemCard } from "./ItemCard";
 export { default as MarketingFooter } from "./MarketingFooter";
+export { default as ProductCard } from "./ProductCard";
+export { default as MyIcongroup } from "./MyIcongroup";
 export { default as ContactUs } from "./ContactUs";
 export { default as HeroLayout3 } from "./HeroLayout3";
 export { default as EditProfile } from "./EditProfile";
-export { default as ProductCard } from "./ProductCard";
 export { default as NavBar } from "./NavBar";
 export { default as ReviewCard } from "./ReviewCard";
 export { default as studioTheme } from "./studioTheme";

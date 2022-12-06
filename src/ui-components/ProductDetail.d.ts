@@ -5,9 +5,12 @@
  **************************************************************************/
 
 import * as React from "react";
+import { Provider } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { FlexProps } from "@aws-amplify/ui-react";
 export declare type ProductDetailProps = React.PropsWithChildren<Partial<FlexProps> & {
+    provider?: Provider;
+} & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;
 export default function ProductDetail(props: ProductDetailProps): React.ReactElement;

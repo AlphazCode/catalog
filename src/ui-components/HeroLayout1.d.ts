@@ -5,9 +5,12 @@
  **************************************************************************/
 
 import * as React from "react";
+import { SysInfo } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { FlexProps } from "@aws-amplify/ui-react";
 export declare type HeroLayout1Props = React.PropsWithChildren<Partial<FlexProps> & {
+    sysInfo?: SysInfo;
+} & {
     mode?: "Dark" | "Light";
 } & {
     overrides?: EscapeHatchProps | undefined | null;

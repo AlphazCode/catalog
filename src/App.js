@@ -5,8 +5,8 @@ import Home from './Pages/Home';
 import Product from './Pages/Product';
 import Catalog from './Pages/Catalog';
 import {Route,Routes} from 'react-router-dom'
-import {CloseIcon, NavBar, ProfileCard} from './ui-components'
-import Auth from '@aws-amplify/auth';
+import {CloseIcon, MarketingFooter, NavBar, ProfileCard} from './ui-components'
+import {Auth} from '@aws-amplify/auth';
 import { Authenticator} from '@aws-amplify/ui-react';
 import { useEffect, useState} from 'react';
 
@@ -98,7 +98,7 @@ function App() {
       setLoggedIn(false)
     })
   }
-
+  console.log(loggedIn);
   return (
     <div className="Main">      
       {loggedIn ? <ProfilePopup/> : <SignInPopup/>}
@@ -107,6 +107,7 @@ function App() {
           <Route exact path="/Catalog" element={<Catalog />} />
           <Route exact path="/Product/:id" element={<Product/>} />
       </Routes>
+      <MarketingFooter></MarketingFooter>
       </div>
   );
 }

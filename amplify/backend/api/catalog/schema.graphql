@@ -15,12 +15,13 @@ type Provider @model @auth(rules: [{allow: public}]) {
 type Product @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String
-  description: String
-  price: String
+  min_price: Float
+  max_price: Float
   Category: Category @hasOne
   image: AWSURL
   Offers: [Offers] @hasMany(indexName: "byProduct", fields: ["id"])
   Comments: [Comment] @hasMany(indexName: "byProduct", fields: ["id"])
+  description: String
 }
 
 type Offers @model @auth(rules: [{allow: public}]) {

@@ -5,12 +5,9 @@
  **************************************************************************/
 
 import * as React from "react";
-import { SysInfo } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { FlexProps } from "@aws-amplify/ui-react";
-export declare type HeroLayout1NavBarProps = React.PropsWithChildren<Partial<FlexProps> & {
-    sysInfo?: SysInfo;
-} & {
+import { IconProps } from "@aws-amplify/ui-react";
+export declare type MyIcongroupProps = React.PropsWithChildren<Partial<IconProps> & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;
-export default function HeroLayout1NavBar(props: HeroLayout1NavBarProps): React.ReactElement;
+export default function MyIcongroup(props: MyIcongroupProps): React.ReactElement;

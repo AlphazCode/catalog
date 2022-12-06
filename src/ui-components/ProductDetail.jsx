@@ -16,7 +16,7 @@ import {
   Text,
 } from "@aws-amplify/ui-react";
 export default function ProductDetail(props) {
-  const { overrides, ...rest } = props;
+  const { provider, overrides, ...rest } = props;
   return (
     <Flex
       gap="24px"
@@ -56,6 +56,7 @@ export default function ProductDetail(props) {
           position="relative"
           padding="0px 0px 0px 0px"
           objectFit="cover"
+          src={provider?.image}
           {...getOverrideProps(overrides, "image")}
         ></Image>
         <Flex

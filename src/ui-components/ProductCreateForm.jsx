@@ -31,38 +31,42 @@ export default function ProductCreateForm(props) {
   } = props;
   const initialValues = {
     name: undefined,
-    description: undefined,
-    price: undefined,
+    min_price: undefined,
+    max_price: undefined,
     Category: {},
     image: undefined,
+    description: undefined,
     productCategoryId: undefined,
   };
   const [name, setName] = React.useState(initialValues.name);
+  const [min_price, setMin_price] = React.useState(initialValues.min_price);
+  const [max_price, setMax_price] = React.useState(initialValues.max_price);
+  const [Category, setCategory] = React.useState(initialValues.Category);
+  const [image, setImage] = React.useState(initialValues.image);
   const [description, setDescription] = React.useState(
     initialValues.description
   );
-  const [price, setPrice] = React.useState(initialValues.price);
-  const [Category, setCategory] = React.useState(initialValues.Category);
-  const [image, setImage] = React.useState(initialValues.image);
   const [productCategoryId, setProductCategoryId] = React.useState(
     initialValues.productCategoryId
   );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setName(initialValues.name);
-    setDescription(initialValues.description);
-    setPrice(initialValues.price);
+    setMin_price(initialValues.min_price);
+    setMax_price(initialValues.max_price);
     setCategory(initialValues.Category);
     setImage(initialValues.image);
+    setDescription(initialValues.description);
     setProductCategoryId(initialValues.productCategoryId);
     setErrors({});
   };
   const validations = {
     name: [],
-    description: [],
-    price: [],
+    min_price: [],
+    max_price: [],
     Category: [],
     image: [{ type: "URL" }],
+    description: [],
     productCategoryId: [],
   };
   const runValidationTasks = async (fieldName, value) => {
@@ -84,10 +88,11 @@ export default function ProductCreateForm(props) {
         event.preventDefault();
         let modelFields = {
           name,
-          description,
-          price,
+          min_price,
+          max_price,
           Category,
           image: image || undefined,
+          description,
           productCategoryId,
         };
         const validationResponses = await Promise.all(
@@ -138,10 +143,11 @@ export default function ProductCreateForm(props) {
           if (onChange) {
             const modelFields = {
               name: value,
-              description,
-              price,
+              min_price,
+              max_price,
               Category,
               image,
+              description,
               productCategoryId,
             };
             const result = onChange(modelFields);
@@ -158,60 +164,80 @@ export default function ProductCreateForm(props) {
         {...getOverrideProps(overrides, "name")}
       ></TextField>
       <TextField
-        label="Description"
+        label="Min price"
         isRequired={false}
         isReadOnly={false}
+        type="number"
+        step="any"
         onChange={(e) => {
-          let { value } = e.target;
+          let value = Number(e.target.value);
+          if (isNaN(value)) {
+            setErrors((errors) => ({
+              ...errors,
+              min_price: "Value must be a valid number",
+            }));
+            return;
+          }
           if (onChange) {
             const modelFields = {
               name,
-              description: value,
-              price,
+              min_price: value,
+              max_price,
               Category,
               image,
+              description,
               productCategoryId,
             };
             const result = onChange(modelFields);
-            value = result?.description ?? value;
+            value = result?.min_price ?? value;
           }
-          if (errors.description?.hasError) {
-            runValidationTasks("description", value);
+          if (errors.min_price?.hasError) {
+            runValidationTasks("min_price", value);
           }
-          setDescription(value);
+          setMin_price(value);
         }}
-        onBlur={() => runValidationTasks("description", description)}
-        errorMessage={errors.description?.errorMessage}
-        hasError={errors.description?.hasError}
-        {...getOverrideProps(overrides, "description")}
+        onBlur={() => runValidationTasks("min_price", min_price)}
+        errorMessage={errors.min_price?.errorMessage}
+        hasError={errors.min_price?.hasError}
+        {...getOverrideProps(overrides, "min_price")}
       ></TextField>
       <TextField
-        label="Price"
+        label="Max price"
         isRequired={false}
         isReadOnly={false}
+        type="number"
+        step="any"
         onChange={(e) => {
-          let { value } = e.target;
+          let value = Number(e.target.value);
+          if (isNaN(value)) {
+            setErrors((errors) => ({
+              ...errors,
+              max_price: "Value must be a valid number",
+            }));
+            return;
+          }
           if (onChange) {
             const modelFields = {
               name,
-              description,
-              price: value,
+              min_price,
+              max_price: value,
               Category,
               image,
+              description,
               productCategoryId,
             };
             const result = onChange(modelFields);
-            value = result?.price ?? value;
+            value = result?.max_price ?? value;
           }
-          if (errors.price?.hasError) {
-            runValidationTasks("price", value);
+          if (errors.max_price?.hasError) {
+            runValidationTasks("max_price", value);
           }
-          setPrice(value);
+          setMax_price(value);
         }}
-        onBlur={() => runValidationTasks("price", price)}
-        errorMessage={errors.price?.errorMessage}
-        hasError={errors.price?.hasError}
-        {...getOverrideProps(overrides, "price")}
+        onBlur={() => runValidationTasks("max_price", max_price)}
+        errorMessage={errors.max_price?.errorMessage}
+        hasError={errors.max_price?.hasError}
+        {...getOverrideProps(overrides, "max_price")}
       ></TextField>
       <SelectField
         label="Category"
@@ -223,10 +249,11 @@ export default function ProductCreateForm(props) {
           if (onChange) {
             const modelFields = {
               name,
-              description,
-              price,
+              min_price,
+              max_price,
               Category: value,
               image,
+              description,
               productCategoryId,
             };
             const result = onChange(modelFields);
@@ -251,10 +278,11 @@ export default function ProductCreateForm(props) {
           if (onChange) {
             const modelFields = {
               name,
-              description,
-              price,
+              min_price,
+              max_price,
               Category,
               image: value,
+              description,
               productCategoryId,
             };
             const result = onChange(modelFields);
@@ -271,6 +299,35 @@ export default function ProductCreateForm(props) {
         {...getOverrideProps(overrides, "image")}
       ></TextField>
       <TextField
+        label="Description"
+        isRequired={false}
+        isReadOnly={false}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              min_price,
+              max_price,
+              Category,
+              image,
+              description: value,
+              productCategoryId,
+            };
+            const result = onChange(modelFields);
+            value = result?.description ?? value;
+          }
+          if (errors.description?.hasError) {
+            runValidationTasks("description", value);
+          }
+          setDescription(value);
+        }}
+        onBlur={() => runValidationTasks("description", description)}
+        errorMessage={errors.description?.errorMessage}
+        hasError={errors.description?.hasError}
+        {...getOverrideProps(overrides, "description")}
+      ></TextField>
+      <TextField
         label="Product category id"
         isRequired={false}
         isReadOnly={false}
@@ -279,10 +336,11 @@ export default function ProductCreateForm(props) {
           if (onChange) {
             const modelFields = {
               name,
-              description,
-              price,
+              min_price,
+              max_price,
               Category,
               image,
+              description,
               productCategoryId: value,
             };
             const result = onChange(modelFields);
@@ -310,7 +368,10 @@ export default function ProductCreateForm(props) {
           onClick={resetStateValues}
           {...getOverrideProps(overrides, "ClearButton")}
         ></Button>
-        <Flex {...getOverrideProps(overrides, "RightAlignCTASubFlex")}>
+        <Flex
+          gap="15px"
+          {...getOverrideProps(overrides, "RightAlignCTASubFlex")}
+        >
           <Button
             children="Cancel"
             type="button"
