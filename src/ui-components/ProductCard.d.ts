@@ -5,11 +5,11 @@
  **************************************************************************/
 
 import * as React from "react";
-import { Product } from "../models";
+import { Category } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { FlexProps } from "@aws-amplify/ui-react";
 export declare type ProductCardProps = React.PropsWithChildren<Partial<FlexProps> & {
-    product?: Product;
+    product?: Category;
 } & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;

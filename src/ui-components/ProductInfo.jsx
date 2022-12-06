@@ -8,8 +8,14 @@
 import * as React from "react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Flex, Image, Text, View } from "@aws-amplify/ui-react";
+import { getProduct } from "../DataStoreResolvers";
 export default function ProductInfo(props) {
-  const { overrides, ...rest } = props;
+  const { product, overrides, ...rest } = props;
+  console.log(product)
+  const [offer, setOffer] = React.useState();
+  
+  setTimeout(function() {getProduct(product.id).then(r => {if(offer === undefined)setOffer(r)})}, 500);
+  console.log(offer)
   return (
     <Flex
       gap="0"
@@ -35,6 +41,7 @@ export default function ProductInfo(props) {
         position="relative"
         padding="0px 0px 0px 0px"
         objectFit="cover"
+        src={offer?.image}
         {...getOverrideProps(overrides, "image")}
       ></Image>
       <Flex
@@ -72,7 +79,7 @@ export default function ProductInfo(props) {
           position="relative"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
-          children="Classic Long Sleeve T-Shirt"
+          children={offer?.name}
           {...getOverrideProps(overrides, "Classic Long Sleeve T-Shirt")}
         ></Text>
         <Flex
@@ -111,7 +118,9 @@ export default function ProductInfo(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children="72"
+            children={`${offer?.min_price}${"\u0433\u0440\u043D -"}${
+              offer?.max_price
+            }${"\u0433\u0440\u043D"}`}
             {...getOverrideProps(overrides, "72")}
           ></Text>
         </Flex>
@@ -135,7 +144,7 @@ export default function ProductInfo(props) {
           position="relative"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
-          children="Information about this product."
+          children={offer?.description}
           {...getOverrideProps(overrides, "Information about this product.")}
         ></Text>
         <View {...getOverrideProps(overrides, "Divider")}></View>

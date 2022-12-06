@@ -5,8 +5,8 @@
  **************************************************************************/
 
 import * as React from "react";
-import { ItemCardProps } from "./ItemCard";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
+import { ItemCardProps } from "./ItemCard";
 import { CollectionProps } from "@aws-amplify/ui-react";
 export declare type ItemCardCollectionProps = React.PropsWithChildren<Partial<CollectionProps<any>> & {
     items?: any[];

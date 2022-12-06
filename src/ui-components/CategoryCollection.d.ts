@@ -5,12 +5,16 @@
  **************************************************************************/
 
 import * as React from "react";
-import { Product } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { FlexProps } from "@aws-amplify/ui-react";
-export declare type ProductInfoProps = React.PropsWithChildren<Partial<FlexProps> & {
-    product?: Product;
+import { CategoryProps } from "./Category";
+import { CollectionProps } from "@aws-amplify/ui-react";
+export declare type CategoryCollectionProps = React.PropsWithChildren<Partial<CollectionProps<any>> & {
+    items?: any[];
+    overrideItems?: (collectionItem: {
+        item: any;
+        index: number;
+    }) => CategoryProps;
 } & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;
-export default function ProductInfo(props: ProductInfoProps): React.ReactElement;
+export default function CategoryCollection(props: CategoryCollectionProps): React.ReactElement;

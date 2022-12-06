@@ -5,12 +5,12 @@
  **************************************************************************/
 
 import * as React from "react";
-import { Product } from "../models";
+import { Category } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { FlexProps } from "@aws-amplify/ui-react";
-export declare type ProductInfoProps = React.PropsWithChildren<Partial<FlexProps> & {
-    product?: Product;
+export declare type CategoryProps = React.PropsWithChildren<Partial<FlexProps> & {
+    category?: Category;
 } & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;
-export default function ProductInfo(props: ProductInfoProps): React.ReactElement;
+export default function Category(props: CategoryProps): React.ReactElement;

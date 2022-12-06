@@ -15,17 +15,14 @@
       "auth": {
         "catalog": {}
       },
+      "storage": {
+        "s3catalogstorage4f1411b5": {}
+      },
       "function": {
         "rozetkaparser": {
           "deploymentBucketName": "amplify-catalog-staging-141333-deployment",
           "s3Key": "amplify-builds/rozetkaparser-3632394c542f437a7465-build.zip"
         }
-      },
-      "api": {
-        "catalog": {}
-      },
-      "storage": {
-        "s3catalogstorage4f1411b5": {}
       }
     }
   }

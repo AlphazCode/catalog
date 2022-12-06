@@ -1,6 +1,6 @@
 import React from "react";
 import '../App.css';
-import { ProductCardCollection, SideBar} from '../ui-components'
+import { Category, CategoryCollection, ProductCardCollection, SideBar} from '../ui-components'
 
 function Catalog() {
   const CollectionOverride = {
@@ -9,6 +9,7 @@ function Catalog() {
   return (
   <div className="App">
     <div className="container">
+      <CategoryCollection></CategoryCollection>
       <div className="Collection">
         <ProductCardCollection className="tallCardCollection" />
       </div>

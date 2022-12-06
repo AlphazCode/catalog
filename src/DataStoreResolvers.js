@@ -1,5 +1,5 @@
 import { DataStore } from "aws-amplify";
-import { Offers, Product, Provider } from "./models";
+import { Category, Offers, Product, Provider } from "./models";
 
 
 async function  getOfferByProductID(productID){
@@ -28,5 +28,14 @@ export async function  getCommentByProductID(productID){
     return await DataStore.query(Comment, c => c.eq(productID))   
 }
 
+export async function  getCategory () {  
+    const product = await DataStore.query(Category)
+    return product
+}
+
+export async function  getCategory (categoryID) {  
+    const product = await DataStore.query(Category, categoryID)
+    return product
+}
 
 export default getOffer

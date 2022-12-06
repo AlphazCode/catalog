@@ -105,6 +105,7 @@ function App() {
       <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/Catalog" element={<Catalog />} />
+          <Route exact path="/Catalog/:id" element={<Catalog/>} />
           <Route exact path="/Product/:id" element={<Product/>} />
       </Routes>
       <MarketingFooter></MarketingFooter>

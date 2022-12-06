@@ -6,40 +6,37 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Offers } from "../models";
+import { Category as Category0 } from "../models";
 import {
   getOverrideProps,
   useDataStoreBinding,
 } from "@aws-amplify/ui-react/internal";
-import ItemCard from "./ItemCard";
+import Category from "./Category";
 import { Collection } from "@aws-amplify/ui-react";
-import getOffer from "../DataStoreResolvers";
-export default function ItemCardCollection(props) {
-  const { items: itemsProp, product, overrideItems, overrides, ...rest } = props;
-  const [offer, setOffer] = React.useState();
+export default function CategoryCollection(props) {
+  const { items: itemsProp, overrideItems, overrides, ...rest } = props;
   const itemsDataStore = useDataStoreBinding({
     type: "collection",
-    model: Offers,
+    model: Category0,
   }).items;
-  
-  setTimeout(function() {getOffer(product.id).then(r => {if(offer === undefined)setOffer(r)})}, 500);
-  
-  const items = offer;
+  const items = itemsProp !== undefined ? itemsProp : itemsDataStore;
+  console.log(items)
   return (
     <Collection
       type="list"
-      direction="column"
-      justifyContent="left"
+      searchPlaceholder="Search..."
+      direction="row"
+      alignItems="stretch"
       items={items || []}
       {...rest}
-      {...getOverrideProps(overrides, "ItemCardCollection")}
+      {...getOverrideProps(overrides, "CategoryCollection")}
     >
       {(item, index) => (
-        <ItemCard
-          offers={item}
+        <Category
+          category={item}
           key={item.id}
           {...(overrideItems && overrideItems({ item, index }))}
-        ></ItemCard>
+        ></Category>
       )}
     </Collection>
   );
