@@ -33,8 +33,8 @@ export async function  getCategory () {
     return product
 }
 
-export async function  getCategory (categoryID) {  
-    const product = await DataStore.query(Category, categoryID)
+export async function  getProductByCategory (categoryID) {  
+    const product = await DataStore.query(Product,c=>c.productCategoryId.eq(categoryID))
     return product
 }
 

@@ -14,21 +14,26 @@ import {
 import ProductCard from "./ProductCard";
 import { Collection } from "@aws-amplify/ui-react";
 
-import getProduct from "../DataStoreResolvers";
+import getProduct, { getProductByCategory } from "../DataStoreResolvers";
 import { useParams } from "react-router-dom";
 export default function ProductCardCollection(props) {
   const { items: itemsProp, overrideItems, overrides, ...rest } = props;
   
   const params = useParams();
-  console.log(params)
   const [product, setProduct] = React.useState();
-  console.log(product)
   const itemsDataStore = useDataStoreBinding({
     type: "collection",
     model: Product,
   }).items;
-  const items = itemsProp !== undefined ? itemsProp : itemsDataStore;
-  console.log(items)
+  setTimeout(function() {getProductByCategory(params.id).then(r => {if(product === undefined)setProduct(r)})}, 500);
+  var items;
+  console.log(params.id)
+  if(params.id !== undefined){
+     items = product
+  }
+  else{
+     items = itemsProp !== undefined ? itemsProp : itemsDataStore;
+  }
   return (
     <Collection
       type="grid"

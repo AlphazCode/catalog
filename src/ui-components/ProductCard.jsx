@@ -28,6 +28,8 @@ export default function ProductCard(props) {
       position="relative"
       padding="0px 0px 0px 0px"
       backgroundColor="rgba(255,255,255,1)"
+      border="1px solid #D3D3D3"
+      border-radius="50px"
       onClick={() => {
         productCardOnClick();
       }}

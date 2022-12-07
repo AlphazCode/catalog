@@ -20,7 +20,6 @@ export default function CategoryCollection(props) {
     model: Category0,
   }).items;
   const items = itemsProp !== undefined ? itemsProp : itemsDataStore;
-  console.log(items)
   return (
     <Collection
       type="list"

@@ -13,7 +13,6 @@ import {
 import { Flex, Text } from "@aws-amplify/ui-react";
 export default function Category(props) {
   const { category, overrides, ...rest } = props;
-  console.log(category.id)
   const CategoryOnClick = useNavigateAction({
     type: "url",
     url: `${"/Catalog/"}${category?.id}`,

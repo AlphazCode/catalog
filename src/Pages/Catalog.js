@@ -3,15 +3,17 @@ import '../App.css';
 import { Category, CategoryCollection, ProductCardCollection, SideBar} from '../ui-components'
 
 function Catalog() {
-  const CollectionOverride = {
-
+  var ProductCardCollectionOverrides = {
+    "ProductCardCollection":{
+      padding:"40px"
+    }
   }
   return (
   <div className="App">
     <div className="container">
       <CategoryCollection></CategoryCollection>
       <div className="Collection">
-        <ProductCardCollection className="tallCardCollection" />
+        <ProductCardCollection overrides={ProductCardCollectionOverrides} className="tallCardCollection" />
       </div>
     </div>
   </div>

@@ -255,6 +255,7 @@ export default function NavBar(props) {
             bottom="8.33%"
             left="16.67%"
             right="16.67%"
+            children="asd"
             {...getOverrideProps(overrides, "Vector")}
           ></Icon>
         </View>

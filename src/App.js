@@ -99,6 +99,14 @@ function App() {
     })
   }
   console.log(loggedIn);
+  var MarketingFooterOverrides = {
+    "MarketingFooter":{
+      width:"100%"
+    },
+    "Rectangle 738":{
+      width:"100%"
+    }
+  }
   return (
     <div className="Main">      
       {loggedIn ? <ProfilePopup/> : <SignInPopup/>}
@@ -108,7 +116,7 @@ function App() {
           <Route exact path="/Catalog/:id" element={<Catalog/>} />
           <Route exact path="/Product/:id" element={<Product/>} />
       </Routes>
-      <MarketingFooter></MarketingFooter>
+      <MarketingFooter overrides={MarketingFooterOverrides}></MarketingFooter>
       </div>
   );
 }

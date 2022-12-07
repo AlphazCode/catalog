@@ -22,7 +22,8 @@
         "rozetkaparser": {
           "deploymentBucketName": "amplify-catalog-staging-141333-deployment",
           "s3Key": "amplify-builds/rozetkaparser-3632394c542f437a7465-build.zip"
-        }
+        },
+        "parseoffers": {}
       }
     }
   }
