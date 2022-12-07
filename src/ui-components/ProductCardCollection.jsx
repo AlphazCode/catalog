@@ -25,9 +25,18 @@ export default function ProductCardCollection(props) {
     type: "collection",
     model: Product,
   }).items;
+  const productCardOverrides ={
+    "image":{
+      "max-width": "100%",
+      "max-height": "100%",
+      margin:"auto",
+      display:"block",
+      "object-fit": "contain"
+
+    }
+  }
   setTimeout(function() {getProductByCategory(params.id).then(r => {if(product === undefined)setProduct(r)})}, 500);
   var items;
-  console.log(params.id)
   if(params.id !== undefined){
      items = product
   }
@@ -52,6 +61,7 @@ export default function ProductCardCollection(props) {
         <ProductCard
           product={item}
           key={item.id}
+          overrides={productCardOverrides}
           {...(overrideItems && overrideItems({ item, index }))}
         ></ProductCard>
       )}

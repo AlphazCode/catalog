@@ -7,6 +7,24 @@ import {ItemCardCollection, ProductInfo } from "../ui-components";
 import { DataStore } from "aws-amplify";
 function Products() {
     const params = useParams();
+    const   productInfoOverrides ={
+      "ProductInfo":{     
+        margin: "40px"
+      },
+      "image":{
+        "max-height":"100%",
+        "max-width":"100%",
+        margin:"auto",
+        display:"block"
+
+      }
+    }
+    const collectionOverrides ={
+      "ItemCardCollection":{     
+        margin: "auto",
+        align:"center"
+      }
+    }
     /*const [item, setItem] = useState();
     const getItem = async () => {
       const items = await DataStore.query(Product, c=>c.id("eq", params.id))//.then(item => {return item})  
@@ -63,8 +81,8 @@ function Products() {
     return (
       <div className="App">
           <div className="ProductDetails">
-            <ProductInfo product={params}></ProductInfo>
-              <ItemCardCollection product={params}></ItemCardCollection>
+            <ProductInfo product={params} overrides={productInfoOverrides}></ProductInfo>
+              <ItemCardCollection product={params} overrides={collectionOverrides}></ItemCardCollection>
           </div>
         </div>
     );
