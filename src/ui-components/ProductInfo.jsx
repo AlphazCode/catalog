@@ -15,7 +15,6 @@ export default function ProductInfo(props) {
   const [offer, setOffer] = React.useState();
   
   setTimeout(function() {getProduct(product.id).then(r => {if(offer === undefined)setOffer(r)})}, 500);
-  console.log(offer)
   return (
     <Flex
       gap="0"

@@ -58,10 +58,10 @@ export default function ProductCard(props) {
           grow="1"
           shrink="1"
           basis="0"
-          alignSelf="stretch"
+          alignSelf="center"
           position="relative"
           padding="0px 0px 0px 0px"
-          objectFit="cover"
+          objectFit="contain"
           src={product?.image}
           {...getOverrideProps(overrides, "image")}
         ></Image>

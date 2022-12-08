@@ -11,11 +11,13 @@ function Products() {
       "ProductInfo":{     
         margin: "40px"
       },
+      
       "image":{
-        "max-height":"100%",
-        "max-width":"100%",
+        "height":"320px",
+        "width":"400px",
         margin:"auto",
-        display:"block"
+        display:"block",
+        objectFit:"contain"
 
       }
     }

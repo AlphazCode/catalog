@@ -3,7 +3,9 @@ import { Category, Offers, Product, Provider } from "./models";
 
 
 async function  getOfferByProductID(productID){
-    return await DataStore.query(Offers, c => c.productID.eq(productID))   
+    return await DataStore.query(Offers, (c) => c.and(c => [
+        c.productID.eq(productID),
+        c.availability.eq(true)]))
 }
 
 const getOffer = async (productID) => {  

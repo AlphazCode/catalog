@@ -27,11 +27,14 @@ export default function ProductCardCollection(props) {
   }).items;
   const productCardOverrides ={
     "image":{
-      "max-width": "100%",
-      "max-height": "100%",
-      margin:"auto",
-      display:"block",
-      "object-fit": "contain"
+      "width": "100%",
+      height: "100%",
+      display: "inline-block",
+      margin: "auto",
+      position:"absolute",
+      padding:"10px",
+      top:"0",
+      bottom:"0"
 
     }
   }
