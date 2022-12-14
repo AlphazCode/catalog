@@ -42,7 +42,7 @@ export default function HeroLayout3(props) {
       >
         <Text
           fontFamily="Inter"
-          fontSize="16px"
+          fontSize="50px"
           fontWeight="700"
           color="rgba(255,255,255,1)"
           lineHeight="24px"
@@ -59,7 +59,7 @@ export default function HeroLayout3(props) {
           position="relative"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
-          children="LOREM IPSUM"
+          children="Deals"
           {...getOverrideProps(overrides, "LOREM IPSUM")}
         ></Text>
         <Flex
@@ -94,7 +94,7 @@ export default function HeroLayout3(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children="Ut enim ad minim veniam quis nostrud"
+            children="Пошук товарів з найкращою ціною"
             {...getOverrideProps(
               overrides,
               "Ut enim ad minim veniam quis nostrud"
@@ -132,7 +132,7 @@ export default function HeroLayout3(props) {
           size="large"
           isDisabled={false}
           variation="primary"
-          children="Primary Button"
+          children="Каталог"
           {...getOverrideProps(overrides, "Button")}
         ></Button>
       </Flex>
