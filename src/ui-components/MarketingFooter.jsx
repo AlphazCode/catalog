@@ -12,6 +12,7 @@ export default function MarketingFooter(props) {
   const { overrides, ...rest } = props;
   return (
     <View
+      width="1440px"
       height="400px"
       display="block"
       gap="unset"

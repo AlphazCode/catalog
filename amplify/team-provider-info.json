@@ -19,11 +19,17 @@
         "s3catalogstorage4f1411b5": {}
       },
       "function": {
-        "rozetkaparser": {
+        "parser": {
           "deploymentBucketName": "amplify-catalog-staging-141333-deployment",
-          "s3Key": "amplify-builds/rozetkaparser-3632394c542f437a7465-build.zip"
+          "s3Key": "amplify-builds/parser-37414776615532365165-build.zip"
         },
-        "parseoffers": {}
+        "cataloglayere6c6c2d3": {
+          "deploymentBucketName": "amplify-catalog-staging-141333-deployment",
+          "s3Key": "amplify-builds/cataloglayere6c6c2d3-LambdaLayerVersion91649c6c-build.zip"
+        }
+      },
+      "api": {
+        "catalog": {}
       }
     }
   }

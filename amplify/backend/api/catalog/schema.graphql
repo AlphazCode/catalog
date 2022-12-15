@@ -1,9 +1,15 @@
-type Comment @model @auth(rules: [{allow: public}]) {
+type PriceHistory @model @auth(rules: [{allow: public}]) {
   id: ID!
-  user_id: String
-  rating: Int
-  comment: String
-  productID: ID! @index(name: "byProduct")
+  Product: Product @hasOne
+  price: Float
+  dateid: Int
+}
+
+type Wishlist @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user_id: ID
+  price: Float
+  Products: Product @hasOne
 }
 
 type Provider @model @auth(rules: [{allow: public}]) {
@@ -19,9 +25,8 @@ type Product @model @auth(rules: [{allow: public}]) {
   max_price: Float
   Category: Category @hasOne
   image: AWSURL
-  Offers: [Offers] @hasMany(indexName: "byProduct", fields: ["id"])
-  Comments: [Comment] @hasMany(indexName: "byProduct", fields: ["id"])
   description: String
+  Offers: [Offers] @hasMany(indexName: "byProduct", fields: ["id"])
 }
 
 type Offers @model @auth(rules: [{allow: public}]) {

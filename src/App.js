@@ -98,7 +98,6 @@ function App() {
       setLoggedIn(false)
     })
   }
-  console.log(loggedIn);
   var MarketingFooterOverrides = {
     "MarketingFooter":{
       width:"100%"

@@ -14,6 +14,7 @@ import {
   Button,
   Flex,
   Icon,
+  Image,
   SearchField,
   Text,
   View,
@@ -255,7 +256,6 @@ export default function NavBar(props) {
             bottom="8.33%"
             left="16.67%"
             right="16.67%"
-            children="asd"
             {...getOverrideProps(overrides, "Vector")}
           ></Icon>
         </View>
@@ -283,6 +283,19 @@ export default function NavBar(props) {
           {...getOverrideProps(overrides, "Button")}
         ></Button>
       </Flex>
+      <Image
+        width="46.22px"
+        height="43px"
+        display="block"
+        gap="unset"
+        alignItems="unset"
+        justifyContent="unset"
+        shrink="0"
+        position="relative"
+        padding="0px 0px 0px 0px"
+        objectFit="cover"
+        {...getOverrideProps(overrides, "image")}
+      ></Image>
     </Flex>
   );
 }

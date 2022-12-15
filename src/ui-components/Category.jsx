@@ -13,7 +13,7 @@ import {
 import { Flex, Text } from "@aws-amplify/ui-react";
 export default function Category(props) {
   const { category, overrides, ...rest } = props;
-  const CategoryOnClick = useNavigateAction({
+  const someOnClick = useNavigateAction({
     type: "url",
     url: `${"/Catalog/"}${category?.id}`,
   });
@@ -28,9 +28,6 @@ export default function Category(props) {
       position="relative"
       padding="30px 95px 30px 95px"
       backgroundColor="rgba(255,255,255,1)"
-      onClick={() => {
-        CategoryOnClick();
-      }}
       {...rest}
       {...getOverrideProps(overrides, "Category")}
     >
@@ -55,6 +52,9 @@ export default function Category(props) {
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
         children={category?.name}
+        onClick={() => {
+          someOnClick();
+        }}
         {...getOverrideProps(overrides, "Some")}
       ></Text>
     </Flex>

@@ -18,11 +18,14 @@ export type AmplifyDependentResourcesAttributes = {
         }
     },
     "function": {
-        "rozetkaparser": {
+        "parser": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
             "LambdaExecutionRole": "string"
+        },
+        "cataloglayere6c6c2d3": {
+            "Arn": "string"
         }
     },
     "storage": {
