@@ -5,86 +5,54 @@ import {Product} from '../models'
 import '../App.css';
 import {ItemCardCollection, ProductInfo } from "../ui-components";
 import { DataStore } from "aws-amplify";
+import {Auth} from '@aws-amplify/auth';
+import { getProduct, getOffer, getOfferByProductID } from "../DataStoreResolvers";
 function Products() {
     const params = useParams();
-    const   productInfoOverrides ={
-      "ProductInfo":{     
-        margin: "40px"
-      },
-      
-      "image":{
-        "height":"320px",
-        "width":"400px",
-        margin:"auto",
-        display:"block",
-        objectFit:"contain"
+    const [loggedIn, setLoggedIn] = useState(false);
+  useEffect(() => {
+    AssessLoggedInstate()
+  }, [])
+  const AssessLoggedInstate = () =>{
+    Auth.currentAuthenticatedUser().then(() =>{
+      setLoggedIn(true)}
+    ).catch(()=>{
+      setLoggedIn(false)
+    })
+  }
+  console.log(loggedIn);
+    
+  const [product, setProduct] = React.useState();
+  const [offer, setOffer] = React.useState();
 
-      }
-    }
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  setTimeout(function() {getOffer(params.id).then(r => {if(offer === undefined)setOffer(r)})}, 100);
+  setTimeout(function() {getProduct(params.id).then(r => {if(product === undefined)setProduct(r)})}, 100);
+
     const collectionOverrides ={
       "ItemCardCollection":{     
         margin: "auto",
         align:"center"
       }
     }
-    /*const [item, setItem] = useState();
-    const getItem = async () => {
-      const items = await DataStore.query(Product, c=>c.id("eq", params.id))//.then(item => {return item})  
-      if(items !== undefined) setItem(items[0]);
-    };
-    useEffect(() => {
-      setTimeout(getItem, 500);
-    }, []);*/
-    /*const params = useParams();
-    const [item, setItem] = useState();
-    const [category, setCategory] = useState(); 
-    const [package_type, setPackage] = useState();
-    const getItem = async () => {
-      const items = await DataStore.query(Drink, c=>c.id("eq", params.id))//.then(item => {return item})
-      const packages = await DataStore.query(PackageType, c=>c.id("eq", items[0].packagetypeID))//.then(item => {return item})   
-      const categories = await DataStore.query(Category, c=>c.id("eq", items[0].categoryID))//.then(item => {return item})   
-      if(items !== undefined) setItem(items[0]);
-      if(categories !== undefined)setCategory(categories[0].name)
-      if(packages !== undefined)setPackage(packages[0].name);
-    };
-    useEffect(() => {
-      setTimeout(getItem, 500);
-    }, []);
-    if(package_type === undefined && category === undefined && item === undefined){
-      return null
-    }
-    if(item === undefined)console.log(item)
-    const detailOverride= {
-      "image":{
-        src:item.image_url
-      },
-      "Rating29766970":{
-        children:item.rating
-      },
-      "CategoryType":{
-        children:category
-      },
-      "Volume":{
-        children:item.volume
-      },
-      "PackageType":{
-        children:package_type
-      },
-      "Alcohol":{
-        children:item.alcohol
-      },
-      "Name":{
-        children:item.name
-      },
-      "Description":{
-        children:item.description
+    const ProductInfoSigned={
+      "Frame 430":{
+        display:"none"
       }
-    }*/
+    }
+    const ProductInfoNotSigned={
+      "Frame 431":{
+        display:"none"
+      }
+    }
     return (
       <div className="App">
           <div className="ProductDetails">
-            <ProductInfo product={params} overrides={productInfoOverrides}></ProductInfo>
-              <ItemCardCollection product={params} overrides={collectionOverrides}></ItemCardCollection>
+            <ProductInfo product={product} overrides={loggedIn ? ProductInfoSigned : ProductInfoNotSigned}></ProductInfo>
+              <ItemCardCollection items={offer} overrides={collectionOverrides}></ItemCardCollection>
           </div>
         </div>
     );

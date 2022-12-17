@@ -28,8 +28,6 @@ export default function ProductCard(props) {
       position="relative"
       padding="0px 0px 0px 0px"
       backgroundColor="rgba(255,255,255,1)"
-      border="1px solid #D3D3D3"
-      border-radius="50px"
       onClick={() => {
         productCardOnClick();
       }}
@@ -49,20 +47,20 @@ export default function ProductCard(props) {
         {...getOverrideProps(overrides, "Frame 423")}
       >
         <Image
-          width="unset"
-          height="unset"
-          display="block"
+          width="100%"
+          height="100%"
+          display="inline-block"
           gap="unset"
           alignItems="unset"
           justifyContent="unset"
-          grow="1"
-          shrink="1"
-          basis="0"
-          alignSelf="center"
-          position="relative"
-          padding="0px 0px 0px 0px"
+          shrink="0"
+          position="absolute"
+          padding="10px"
           objectFit="contain"
           src={product?.image}
+          margin="auto"
+          top="0px"
+          bottom="0px"
           {...getOverrideProps(overrides, "image")}
         ></Image>
       </Flex>

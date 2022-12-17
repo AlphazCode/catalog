@@ -6,11 +6,11 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
-import { Button, Flex, Image, Text } from "@aws-amplify/ui-react";
-import MyIcongroup from "./MyIcongroup";
+import { getOverrideProps, useAuth } from "@aws-amplify/ui-react/internal";
+import { Button, Flex, Image, Text, View } from "@aws-amplify/ui-react";
 export default function ProfileCard(props) {
   const { overrides, ...rest } = props;
+  const authAttributes = useAuth().user?.attributes ?? {};
   return (
     <Flex
       gap="24px"
@@ -37,6 +37,7 @@ export default function ProfileCard(props) {
         borderRadius="160px"
         padding="0px 0px 0px 0px"
         objectFit="cover"
+        src="https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/no-profile-picture-icon.png"
         {...getOverrideProps(overrides, "image")}
       ></Image>
       <Flex
@@ -69,7 +70,9 @@ export default function ProfileCard(props) {
           position="relative"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
-          children="Melinda Marcus"
+          children={`${authAttributes["name"]}${" "}${
+            authAttributes["family_name"]
+          }`}
           {...getOverrideProps(overrides, "Melinda Marcus")}
         ></Text>
         <Text
@@ -91,7 +94,7 @@ export default function ProfileCard(props) {
           position="relative"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
-          children="Design Engineer at Cloth Studios"
+          children={authAttributes["email"]}
           {...getOverrideProps(overrides, "Design Engineer at Cloth Studios")}
         ></Text>
       </Flex>
@@ -105,21 +108,10 @@ export default function ProfileCard(props) {
         shrink="0"
         position="relative"
         padding="0px 0px 0px 0px"
+        display="none"
         {...getOverrideProps(overrides, "Followers")}
       >
-        <MyIcongroup
-          width="24px"
-          height="24px"
-          display="block"
-          gap="unset"
-          alignItems="unset"
-          justifyContent="unset"
-          overflow="hidden"
-          shrink="0"
-          position="relative"
-          padding="0px 0px 0px 0px"
-          {...getOverrideProps(overrides, "MyIcon/group")}
-        ></MyIcongroup>
+        <View {...getOverrideProps(overrides, "MyIcon/group")}></View>
         <Text
           fontFamily="Inter"
           fontSize="16px"
@@ -149,7 +141,7 @@ export default function ProfileCard(props) {
         size="large"
         isDisabled={false}
         variation="primary"
-        children="View Profile"
+        children="Вийти"
         {...getOverrideProps(overrides, "Button")}
       ></Button>
     </Flex>

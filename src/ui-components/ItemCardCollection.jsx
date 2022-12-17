@@ -13,18 +13,14 @@ import {
 } from "@aws-amplify/ui-react/internal";
 import ItemCard from "./ItemCard";
 import { Collection } from "@aws-amplify/ui-react";
-import getOffer from "../DataStoreResolvers";
 export default function ItemCardCollection(props) {
-  const { items: itemsProp, product, overrideItems, overrides, ...rest } = props;
-  const [offer, setOffer] = React.useState();
+  const { items: itemsProp, overrideItems, overrides, ...rest } = props;
   const itemsDataStore = useDataStoreBinding({
     type: "collection",
     model: Offers,
   }).items;
-  
-  setTimeout(function() {getOffer(product.id).then(r => {if(offer === undefined)setOffer(r)})}, 500);
-  
-  const items = offer;
+  console.log(props)
+  const items = itemsProp !== undefined ? itemsProp : itemsDataStore;
   return (
     <Collection
       type="list"
@@ -37,6 +33,7 @@ export default function ItemCardCollection(props) {
       {(item, index) => (
         <ItemCard
           offers={item}
+          provider={item.provider}
           key={item.id}
           {...(overrideItems && overrideItems({ item, index }))}
         ></ItemCard>

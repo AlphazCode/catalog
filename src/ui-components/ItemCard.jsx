@@ -16,7 +16,7 @@ export default function ItemCard(props) {
   const classicLongSleeveOnClick = useNavigateAction({
     type: "url",
     url: offers?.url,
-  }); 
+  });
   return (
     <Flex
       gap="16px"
@@ -69,7 +69,7 @@ export default function ItemCard(props) {
             borderRadius="21px"
             padding="0px 0px 0px 0px"
             objectFit="cover"
-            src={offers.provider[0]?.image}
+            src={provider?.image}
             {...getOverrideProps(overrides, "image")}
           ></Image>
         </View>
@@ -106,7 +106,7 @@ export default function ItemCard(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children={offers.provider[0]?.name}
+            children={provider?.name}
             {...getOverrideProps(overrides, "T-Shirt")}
           ></Text>
           <Text

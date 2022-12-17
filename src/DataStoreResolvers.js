@@ -2,13 +2,14 @@ import { DataStore } from "aws-amplify";
 import { Category, Offers, Product, Provider } from "./models";
 
 
-async function  getOfferByProductID(productID){
-    return await DataStore.query(Offers, (c) => c.and(c => [
+export async function  getOfferByProductID(productID){
+    var offers = await DataStore.query(Offers, (c) => c.and(c => [
         c.productID.eq(productID),
         c.availability.eq(true)]))
+    return offers
 }
 
-const getOffer = async (productID) => {  
+export async function getOffer(productID){  
 
     var obj = []
     var offers = await getOfferByProductID(productID);
@@ -17,6 +18,7 @@ const getOffer = async (productID) => {
         var res = Object.assign({},offers[key], {"provider":provider})
         obj.push(res)
     }
+    console.log(obj)
     return obj
     
 }
