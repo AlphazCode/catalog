@@ -14,6 +14,7 @@ import {
   Flex,
   Grid,
   SelectField,
+  SwitchField,
   TextField,
 } from "@aws-amplify/ui-react";
 import { DataStore } from "aws-amplify";
@@ -37,6 +38,7 @@ export default function ProductUpdateForm(props) {
     Category: {},
     image: undefined,
     description: undefined,
+    availability: false,
     productCategoryId: undefined,
   };
   const [name, setName] = React.useState(initialValues.name);
@@ -46,6 +48,9 @@ export default function ProductUpdateForm(props) {
   const [image, setImage] = React.useState(initialValues.image);
   const [description, setDescription] = React.useState(
     initialValues.description
+  );
+  const [availability, setAvailability] = React.useState(
+    initialValues.availability
   );
   const [productCategoryId, setProductCategoryId] = React.useState(
     initialValues.productCategoryId
@@ -59,6 +64,7 @@ export default function ProductUpdateForm(props) {
     setCategory(cleanValues.Category);
     setImage(cleanValues.image);
     setDescription(cleanValues.description);
+    setAvailability(cleanValues.availability);
     setProductCategoryId(cleanValues.productCategoryId);
     setErrors({});
   };
@@ -78,6 +84,7 @@ export default function ProductUpdateForm(props) {
     Category: [],
     image: [{ type: "URL" }],
     description: [],
+    availability: [],
     productCategoryId: [],
   };
   const runValidationTasks = async (fieldName, value) => {
@@ -104,6 +111,7 @@ export default function ProductUpdateForm(props) {
           Category,
           image: image || undefined,
           description,
+          availability,
           productCategoryId,
         };
         const validationResponses = await Promise.all(
@@ -161,6 +169,7 @@ export default function ProductUpdateForm(props) {
               Category,
               image,
               description,
+              availability,
               productCategoryId,
             };
             const result = onChange(modelFields);
@@ -200,6 +209,7 @@ export default function ProductUpdateForm(props) {
               Category,
               image,
               description,
+              availability,
               productCategoryId,
             };
             const result = onChange(modelFields);
@@ -239,6 +249,7 @@ export default function ProductUpdateForm(props) {
               Category,
               image,
               description,
+              availability,
               productCategoryId,
             };
             const result = onChange(modelFields);
@@ -269,6 +280,7 @@ export default function ProductUpdateForm(props) {
               Category: value,
               image,
               description,
+              availability,
               productCategoryId,
             };
             const result = onChange(modelFields);
@@ -299,6 +311,7 @@ export default function ProductUpdateForm(props) {
               Category,
               image: value,
               description,
+              availability,
               productCategoryId,
             };
             const result = onChange(modelFields);
@@ -329,6 +342,7 @@ export default function ProductUpdateForm(props) {
               Category,
               image,
               description: value,
+              availability,
               productCategoryId,
             };
             const result = onChange(modelFields);
@@ -344,6 +358,37 @@ export default function ProductUpdateForm(props) {
         hasError={errors.description?.hasError}
         {...getOverrideProps(overrides, "description")}
       ></TextField>
+      <SwitchField
+        label="Availability"
+        defaultChecked={false}
+        isDisabled={false}
+        isChecked={availability}
+        onChange={(e) => {
+          let value = e.target.checked;
+          if (onChange) {
+            const modelFields = {
+              name,
+              min_price,
+              max_price,
+              Category,
+              image,
+              description,
+              availability: value,
+              productCategoryId,
+            };
+            const result = onChange(modelFields);
+            value = result?.availability ?? value;
+          }
+          if (errors.availability?.hasError) {
+            runValidationTasks("availability", value);
+          }
+          setAvailability(value);
+        }}
+        onBlur={() => runValidationTasks("availability", availability)}
+        errorMessage={errors.availability?.errorMessage}
+        hasError={errors.availability?.hasError}
+        {...getOverrideProps(overrides, "availability")}
+      ></SwitchField>
       <TextField
         label="Product category id"
         isRequired={false}
@@ -359,6 +404,7 @@ export default function ProductUpdateForm(props) {
               Category,
               image,
               description,
+              availability,
               productCategoryId: value,
             };
             const result = onChange(modelFields);

@@ -13,7 +13,8 @@ import {
 import { Flex, Image, Text, View } from "@aws-amplify/ui-react";
 export default function ItemCard(props) {
   const { offers, provider, overrides, ...rest } = props;
-  const classicLongSleeveOnClick = useNavigateAction({
+  const itemCardOnClick = useNavigateAction({
+    target: "_blank",
     type: "url",
     url: offers?.url,
   });
@@ -28,6 +29,9 @@ export default function ItemCard(props) {
       position="relative"
       padding="2px 0px 0px 16px"
       backgroundColor="rgba(255,255,255,1)"
+      onClick={() => {
+        itemCardOnClick();
+      }}
       {...rest}
       {...getOverrideProps(overrides, "ItemCard")}
     >
@@ -131,9 +135,6 @@ export default function ItemCard(props) {
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
             children={offers?.name}
-            onClick={() => {
-              classicLongSleeveOnClick();
-            }}
             {...getOverrideProps(overrides, "Classic Long Sleeve")}
           ></Text>
         </Flex>

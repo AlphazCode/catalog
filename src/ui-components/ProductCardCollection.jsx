@@ -13,39 +13,13 @@ import {
 } from "@aws-amplify/ui-react/internal";
 import ProductCard from "./ProductCard";
 import { Collection } from "@aws-amplify/ui-react";
-
-import getProduct, { getProductByCategory } from "../DataStoreResolvers";
-import { useParams } from "react-router-dom";
 export default function ProductCardCollection(props) {
   const { items: itemsProp, overrideItems, overrides, ...rest } = props;
-  
-  const params = useParams();
-  const [product, setProduct] = React.useState();
   const itemsDataStore = useDataStoreBinding({
     type: "collection",
     model: Product,
   }).items;
-  const productCardOverrides ={
-    "image":{
-      "width": "100%",
-      height: "100%",
-      display: "inline-block",
-      margin: "auto",
-      position:"absolute",
-      padding:"10px",
-      top:"0",
-      bottom:"0"
-
-    }
-  }
-  setTimeout(function() {getProductByCategory(params.id).then(r => {if(product === undefined)setProduct(r)})}, 500);
-  var items;
-  if(params.id !== undefined){
-     items = product
-  }
-  else{
-     items = itemsProp !== undefined ? itemsProp : itemsDataStore;
-  }
+  const items = itemsProp !== undefined ? itemsProp : itemsDataStore;
   return (
     <Collection
       type="grid"
@@ -63,8 +37,8 @@ export default function ProductCardCollection(props) {
       {(item, index) => (
         <ProductCard
           product={item}
+          margin="5px 5px 5px 5px"
           key={item.id}
-          overrides={productCardOverrides}
           {...(overrideItems && overrideItems({ item, index }))}
         ></ProductCard>
       )}

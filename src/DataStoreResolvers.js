@@ -18,7 +18,6 @@ export async function getOffer(productID){
         var res = Object.assign({},offers[key], {"provider":provider})
         obj.push(res)
     }
-    console.log(obj)
     return obj
     
 }
@@ -41,5 +40,3 @@ export async function  getProductByCategory (categoryID) {
     const product = await DataStore.query(Product,c=>c.productCategoryId.eq(categoryID))
     return product
 }
-
-export default getOffer

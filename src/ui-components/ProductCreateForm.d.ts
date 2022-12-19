@@ -6,7 +6,7 @@
 
 import * as React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { GridProps, SelectFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { GridProps, SelectFieldProps, SwitchFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
 export declare type ValidationResponse = {
     hasError: boolean;
     errorMessage?: string;
@@ -19,6 +19,7 @@ export declare type ProductCreateFormInputValues = {
     Category?: string;
     image?: string;
     description?: string;
+    availability?: boolean;
     productCategoryId?: string;
 };
 export declare type ProductCreateFormValidationValues = {
@@ -28,6 +29,7 @@ export declare type ProductCreateFormValidationValues = {
     Category?: ValidationFunction<string>;
     image?: ValidationFunction<string>;
     description?: ValidationFunction<string>;
+    availability?: ValidationFunction<boolean>;
     productCategoryId?: ValidationFunction<string>;
 };
 export declare type FormProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
@@ -39,6 +41,7 @@ export declare type ProductCreateFormOverridesProps = {
     Category?: FormProps<SelectFieldProps>;
     image?: FormProps<TextFieldProps>;
     description?: FormProps<TextFieldProps>;
+    availability?: FormProps<SwitchFieldProps>;
     productCategoryId?: FormProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type ProductCreateFormProps = React.PropsWithChildren<{

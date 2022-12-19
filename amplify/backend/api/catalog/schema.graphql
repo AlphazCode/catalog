@@ -27,6 +27,7 @@ type Product @model @auth(rules: [{allow: public}]) {
   image: AWSURL
   description: String
   Offers: [Offers] @hasMany(indexName: "byProduct", fields: ["id"])
+  availability: Boolean
 }
 
 type Offers @model @auth(rules: [{allow: public}]) {

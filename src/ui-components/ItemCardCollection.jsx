@@ -19,7 +19,7 @@ export default function ItemCardCollection(props) {
     type: "collection",
     model: Offers,
   }).items;
-  console.log(props)
+
   const items = itemsProp !== undefined ? itemsProp : itemsDataStore;
   return (
     <Collection
@@ -33,7 +33,7 @@ export default function ItemCardCollection(props) {
       {(item, index) => (
         <ItemCard
           offers={item}
-          provider={item.provider}
+          provider={eval(props.provider)}
           key={item.id}
           {...(overrideItems && overrideItems({ item, index }))}
         ></ItemCard>
